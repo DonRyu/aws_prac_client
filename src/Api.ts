@@ -8,9 +8,9 @@ class Api {
       url: `${API_HOST}/${path}`,
       method: "POST",
       data: data,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      // headers: {
+      //   "Content-Type": "multipart/form-data",
+      // },
     });
     if (res) {
       return res.data;
