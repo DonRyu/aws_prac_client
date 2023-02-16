@@ -5,7 +5,7 @@ class Api {
   static async requestToServer(path: string, data?: any) {
     let res = await axios({
       baseURL: API_HOST,
-      url: `${API_HOST}/${path}`,
+      url: `${API_HOST}:8080/${path}`,
       method: "POST",
       data: data,
       // headers: {
