@@ -42,6 +42,9 @@ function App() {
             );
           })}
         </div>
+        <button onClick={()=>{
+          Api.requestToServer('test','')
+        }}>test</button>
       </div>
     </>
   );
