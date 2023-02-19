@@ -20,9 +20,9 @@
   "scripts": {
     "start": "export REACT_APP_API_HOST=http://localhost:8080 && react-scripts start",
     "build": "export REACT_APP_API_HOST=http://localhost:8080 && react-scripts build",
-    "deploy":"yarn build:prod && cp build/ /usr/share/nginx/html/ && yarn deploy:conf",
+    "deploy":"yarn build:prod && sudo cp -r build/* /usr/share/nginx/html/ && yarn deploy:conf",
     "build:prod": "export REACT_APP_API_HOST=http://18.206.233.33:8080 && react-scripts build",
-    "deploy:conf":"cp nginx.conf /etc/nginx/conf.d/",
+    "deploy:conf":"sudo cp nginx.conf /etc/nginx/conf.d/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
