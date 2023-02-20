@@ -19,8 +19,8 @@
   },
   "scripts": {
     "start": "export REACT_APP_API_HOST=http://localhost:3000 && react-scripts start",
-    "build": "export REACT_APP_API_HOST=http://100.26.230.30 && react-scripts build",
-    "build:prod": "export REACT_APP_API_HOST=http://100.26.230.30 && react-scripts build",
+    "build": "export REACT_APP_API_HOST=http://100.26.230.30:3000 && react-scripts build",
+    "build:prod": "export REACT_APP_API_HOST=http://100.26.230.30:3000 && react-scripts build",
     "deploy:conf":"sudo cp nginx.conf /etc/nginx/conf.d/",
     "deploy":"yarn build:prod && sudo cp -r build/* /usr/share/nginx/html/ && yarn deploy:conf",
     "test": "react-scripts test",
