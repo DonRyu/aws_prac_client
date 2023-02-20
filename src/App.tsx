@@ -73,7 +73,7 @@ const ImageBox = ({
       </button>
       <img
         alt={"img"}
-        src={`${API_HOST}/images/${src}`}
+        src={`${API_HOST}/api/images/${src}`}
         style={{ marginTop: 20, objectFit: "cover", width: 200, height: 300 }}
       />
     </div>
