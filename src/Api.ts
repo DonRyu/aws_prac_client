@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_HOST = process.env.REACT_APP_API_HOST;
+const API_HOST = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080';
 
 class Api {
   static async requestToServer(path: string, data?: any) {
