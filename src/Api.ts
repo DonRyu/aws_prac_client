@@ -4,7 +4,7 @@ const API_HOST = process.env.NODE_ENV === 'production' ? 'http://100.26.230.30:8
 class Api {
   static async requestToServer(path: string, data?: any) {
     let res = await axios({
-      baseURL: `/api`,
+      baseURL: `${API_HOST}/api`,
       url: `${path}`,
       method: "POST",
       data: data,
