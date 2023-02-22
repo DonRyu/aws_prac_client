@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_HOST = process.env.NODE_ENV === 'production' ? 'http://54.197.128.126:8080' : 'http://localhost:8080';
+export const API_HOST = process.env.NODE_ENV === 'production' ? 'http://54.197.128.126:8080' : 'http://localhost:8080';
 
 class Api {
   static async requestToServer(path: string, data?: any) {

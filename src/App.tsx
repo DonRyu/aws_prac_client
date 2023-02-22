@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Api from "./Api";
-const API_HOST = process.env.REACT_APP_API_HOST;
+import Api, { API_HOST } from "./Api";
 
 function App() {
   const [imgList, setImageList] = useState([]);
