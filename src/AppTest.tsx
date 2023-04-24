@@ -1,17 +1,22 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useInput from "./useInput";
 
-const AppTest = ()=>{
+const alertMsg = (value: any) => {
+  alert(value);
+  return;
+};
 
-    const [value,setValue] = useInput('sibar')
+const AppTest = () => {
+  const [value, setValue, submit] = useInput("sibar", alertMsg);
 
-    return (
-        <div>
-            <h1>AppTest</h1>
-            <input value={value} onChange={setValue}/>
-            {value}
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>AppTest</h1>
+      <input value={value} onChange={setValue} />
+      <button onClick={submit}>Ok</button>
+      {value}
+    </div>
+  );
+};
 
-export default AppTest
+export default AppTest;
