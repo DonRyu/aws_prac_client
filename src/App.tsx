@@ -3,14 +3,20 @@ import Api, { API_HOST } from "./Api";
 
 function App() {
   const [imgList, setImageList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState({ id: "", password: "" });
 
   useEffect(() => {
     getImageList();
   }, []);
 
-  const getImageList = () => {
+  const getImageList = async () => {
+
     Api.requestToServer("getImages", "").then((res: any) => {
-      setImageList(res);
+      if (res) {
+        setLoading(false);
+        setImageList(res);
+      }
     });
   };
 
@@ -28,22 +34,43 @@ function App() {
     []
   );
 
+  const Auth = ()=>{
+     Api.requestToServer('login',userData).then((res)=>{
+      console.log('res')
+     })
+  }
+
   return (
     <>
       <div className="App">
+        id:
+        <input onChange={(e)=>setUserData({...userData,id:e.target.value})} />
+        pss:
+        <input onChange={(e)=>setUserData({...userData,password:e.target.value})} />
+        <button onClick={Auth}>Submit</button>
         <div>
           <input type={"file"} accept={"image/*"} onChange={onUploadImage} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           {imgList?.map((item, key) => {
             return (
-              <ImageBox src={item} key={key} getImageList={getImageList} />
+              <ImageBox
+                src={item}
+                key={key}
+                getImageList={getImageList}
+                loading={loading}
+                setLoading={setLoading}
+              />
             );
           })}
         </div>
-        <button onClick={()=>{
-          Api.requestToServer('test','')
-        }}>test</button>
+        <button
+          onClick={() => {
+            Api.requestToServer("test", "");
+          }}
+        >
+          test
+        </button>
       </div>
     </>
   );
@@ -52,19 +79,25 @@ function App() {
 const ImageBox = ({
   src,
   getImageList,
+  setLoading,
+  loading,
 }: {
   src: string;
   getImageList: Function;
+  setLoading: Function;
+  loading: boolean;
 }) => {
   const deleteImage = (key: string) => {
+    setLoading(true);
     Api.requestToServer("deleteImage", { key }).then((res) => {
-      getImageList();
+      return getImageList();
     });
   };
 
   return (
     <div style={{ position: "relative" }}>
       <button
+        disabled={loading}
         style={{ position: "absolute", right: 0, top: 0 }}
         onClick={(e) => deleteImage(src)}
       >
