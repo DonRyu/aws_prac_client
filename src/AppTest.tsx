@@ -9,6 +9,8 @@ const alertMsg = (value: any) => {
 const AppTest = () => {
   const [value, setValue, submit] = useInput("sibar", alertMsg);
 
+  
+
   return (
     <div>
       <h1>AppTest</h1>
