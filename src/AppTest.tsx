@@ -7,18 +7,24 @@ const alertMsg = (value: any) => {
 };
 
 const AppTest = () => {
-  const [value, setValue, submit] = useInput("sibar", alertMsg);
+const [count, setCount] = useState(1)
 
+
+console.log('count',count)
   
 
   return (
     <div>
+
       <h1>AppTest</h1>
-      <input value={value} onChange={setValue} />
-      <button onClick={submit}>Ok</button>
-      {value}
+
+     <button onClick={()=>setCount(count+3)}>
+      asd
+     </button>
     </div>
   );
 };
 
 export default AppTest;
+
+
